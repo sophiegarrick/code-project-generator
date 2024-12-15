@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Code Project Generator</title>
+    <!-- PyScript CSS and JS -->
+    <link rel="stylesheet" href="https://pyscript.net/alpha/pyscript.css">
+    <script defer src="https://pyscript.net/alpha/pyscript.js"></script>
+</head>
+<body>
+    <h1>Code Project Generator</h1>
+    <p>Click the button below to generate a random coding project idea:</p>
+
+    <!-- Button and Output Section -->
+    <button id="generate-button">Generate Idea</button>
+    <div id="output"></div>
+
+    <!-- PyScript Code -->
+    <py-script>
+        import random
+
+        # List of project ideas
+        project_ideas = [
+            {
+                "title": "Random Compliment Generator",
+                "description": "A program that generates a random compliment.",
+                "steps": [
+                    "Create a list of compliments.",
+                    "Use a randomization function to select a compliment.",
+                    "Prompt the user to press Enter to see the compliment.",
+                    "Print the compliment."
+                ]
+            },
+            {
+                "title": "Number Guessing Game",
+                "description": "A game where the user guesses a randomly chosen number.",
+                "steps": [
+                    "Generate a random number.",
+                    "Ask the user for a guess.",
+                    "Provide feedback if the guess is too high or too low.",
+                    "Repeat until the correct number is guessed."
+                ]
+            },
+            # Add more project ideas here...
+        ]
+
+        # Function to generate a random project
+        def generate_project():
+            project = random.choice(project_ideas)
+            title = f"<strong>Title:</strong> {project['title']}<br>"
+            description = f"<strong>Description:</strong> {project['description']}<br>"
+            steps = f"<strong>Steps:</strong><ul>" + ''.join(f"<li>{step}</li>" for step in project['steps']) + "</ul>"
+            output.innerHTML = title + description + steps
+
+        # Bind the button to the function
+        button = Element("generate-button")
+        output = Element("output")
+        button.element.onclick = generate_project
+    </py-script>
+</body>
+</html>
