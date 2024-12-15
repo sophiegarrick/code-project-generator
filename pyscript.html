@@ -46,12 +46,13 @@
         ]
 
         # Function to generate a random project
-        def generate_project():
-            project = random.choice(project_ideas)
-            title = f"<strong>Title:</strong> {project['title']}<br>"
-            description = f"<strong>Description:</strong> {project['description']}<br>"
-            steps = f"<strong>Steps:</strong><ul>" + ''.join(f"<li>{step}</li>" for step in project['steps']) + "</ul>"
-            output.innerHTML = title + description + steps
+        def generate_project(event=None):  # Accepts the event argument
+    project = random.choice(project_ideas)
+    title = f"<strong>Title:</strong> {project['title']}<br>"
+    description = f"<strong>Description:</strong> {project['description']}<br>"
+    steps = f"<strong>Steps:</strong><ul>" + ''.join(f"<li>{step}</li>" for step in project['steps']) + "</ul>"
+    output.write(title + description + steps)
+
 
         # Bind the button to the function
         button = Element("generate-button")
