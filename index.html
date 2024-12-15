@@ -19,6 +19,7 @@
     <!-- PyScript Code -->
     <py-script>
         import random
+        from pyscript import Element
 
         # List of project ideas
         project_ideas = [
@@ -42,17 +43,25 @@
                     "Repeat until the correct number is guessed."
                 ]
             },
-            # Add more project ideas here...
+            {
+                "title": "Simple Calculator",
+                "description": "A program that performs basic arithmetic operations.",
+                "steps": [
+                    "Prompt the user to input two numbers.",
+                    "Ask the user to select an operation (add, subtract, multiply, divide).",
+                    "Perform the calculation.",
+                    "Display the result to the user."
+                ]
+            }
         ]
 
         # Function to generate a random project
         def generate_project(event=None):  # Accepts the event argument
-    project = random.choice(project_ideas)
-    title = f"<strong>Title:</strong> {project['title']}<br>"
-    description = f"<strong>Description:</strong> {project['description']}<br>"
-    steps = f"<strong>Steps:</strong><ul>" + ''.join(f"<li>{step}</li>" for step in project['steps']) + "</ul>"
-    output.write(title + description + steps)
-
+            project = random.choice(project_ideas)
+            title = f"<strong>Title:</strong> {project['title']}<br>"
+            description = f"<strong>Description:</strong> {project['description']}<br>"
+            steps = f"<strong>Steps:</strong><ul>" + ''.join(f"<li>{step}</li>" for step in project['steps']) + "</ul>"
+            output.write(title + description + steps)
 
         # Bind the button to the function
         button = Element("generate-button")
